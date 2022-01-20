@@ -10,8 +10,18 @@ Console.WriteLine("Server is started!");
 while (true)
 {
     var connection = await serverListener.AcceptTcpClientAsync();
-    Console.WriteLine("Server is connected!"); 
+    Console.WriteLine("Server is connected!");
     var networkStream = connection.GetStream();
+    var bufferLength = 1024;
+    var buffer = new byte[bufferLength];
+    var sb = new StringBuilder();
+    while (networkStream.DataAvailable)
+    {
+        var bytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length);
+        sb.Append(Encoding.UTF8.GetString(buffer, 0, bytesRead));
+    }
+
+    Console.WriteLine(sb);
     var content = @"
 <html>
     <head>

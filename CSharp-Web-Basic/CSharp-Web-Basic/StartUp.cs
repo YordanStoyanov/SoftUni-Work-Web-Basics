@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSharp_Web_Basic
 {
-    internal class StartUp
+    public class StartUp
     {
     }
 }

@@ -21,7 +21,7 @@ while (true)
             Hello from the server!
         </body>
 </html>";
-    var contentLength = content.Length;
+    var contentLength = content.Length; 
     var response = $@"
 HTTP/1.1 200 OK
 Date: {DateTime.UtcNow.ToString("r")}

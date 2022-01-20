@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "2e0ba6f9-fa02-40c6-b186-a0f33dc3cd63": {
+      "ProjectGuid": "2e0ba6f9-fa02-40c6-b186-a0f33dc3cd63",
+      "DisplayName": "CSharp-Web-Basic",
+      "ColorIndex": 0
+    },
+    "545901f5-af43-4cce-b0de-29dbb5f1c7a0": {
+      "ProjectGuid": "545901f5-af43-4cce-b0de-29dbb5f1c7a0",
+      "DisplayName": "MyWebServer.Server",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

@@ -6,7 +6,7 @@
         private HttpMethod Method { get; set; }
         public string Url { get; set; }
 
-        public Dictionary<string, HttpHeader> Headers { get; } = new Dictionary<string, HttpHeader>();
+        public HttpHeaderCollection Headers { get; } = new HttpHeaderCollection();
         public string Body { get; set; }
     }
 }

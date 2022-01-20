@@ -10,7 +10,7 @@ Console.WriteLine("Server is started!");
 while (true)
 {
     var connection = await serverListener.AcceptTcpClientAsync();
-    Console.WriteLine("Server is connected!");
+    Console.WriteLine("Server is connected!"); 
     var networkStream = connection.GetStream();
     var content = "Hello from the server";
     var contentLength = content.Length;

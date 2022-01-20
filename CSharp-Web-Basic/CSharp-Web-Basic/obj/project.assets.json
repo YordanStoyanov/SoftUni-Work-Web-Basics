@@ -1,0 +1,94 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "MyWebServer.Server/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/MyWebServer.Server.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MyWebServer.Server.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MyWebServer.Server/1.0.0": {
+      "type": "project",
+      "path": "../MyWebServer.Server/MyWebServer.Server.csproj",
+      "msbuildProject": "../MyWebServer.Server/MyWebServer.Server.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "MyWebServer.Server >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\YStoyanov\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\YStoyanov\\Documents\\SoftUni-Web-Basic\\CSharp-Web-Basic\\SoftUni-Work-Web-Basics\\CSharp-Web-Basic\\CSharp-Web-Basic\\CSharp-Web-Basic.csproj",
+      "projectName": "CSharp-Web-Basic",
+      "projectPath": "C:\\Users\\YStoyanov\\Documents\\SoftUni-Web-Basic\\CSharp-Web-Basic\\SoftUni-Work-Web-Basics\\CSharp-Web-Basic\\CSharp-Web-Basic\\CSharp-Web-Basic.csproj",
+      "packagesPath": "C:\\Users\\YStoyanov\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\YStoyanov\\Documents\\SoftUni-Web-Basic\\CSharp-Web-Basic\\SoftUni-Work-Web-Basics\\CSharp-Web-Basic\\CSharp-Web-Basic\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\YStoyanov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "C:\\Users\\YStoyanov\\Documents\\SoftUni-Web-Basic\\CSharp-Web-Basic\\SoftUni-Work-Web-Basics\\CSharp-Web-Basic\\MyWebServer.Server\\MyWebServer.Server.csproj": {
+              "projectPath": "C:\\Users\\YStoyanov\\Documents\\SoftUni-Web-Basic\\CSharp-Web-Basic\\SoftUni-Work-Web-Basics\\CSharp-Web-Basic\\MyWebServer.Server\\MyWebServer.Server.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

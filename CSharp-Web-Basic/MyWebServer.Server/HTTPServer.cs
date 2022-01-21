@@ -13,7 +13,7 @@
         {
             this.ipAddress = IPAddress.Parse(ipAddress);
             this.port = 9090;
-            listener = new TcpListener(this.ipAddress, this.port);
+            listener = new TcpListener(this.ipAddress, port);
         }
 
         public async Task Start()
@@ -30,6 +30,7 @@
                 await WriteResponse(networkStream);
                 connection.Close();
             }
+
         }
 
         private async Task<string> ReadRequest(NetworkStream networkStream)
@@ -37,11 +38,16 @@
             var bufferLength = 1024;
             var buffer = new byte[bufferLength];
             var sb = new StringBuilder();
-            while (networkStream.DataAvailable)
+            //while (networkStream.DataAvailable)
+            //{
+            //    var bytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length);
+            //    sb.Append(Encoding.UTF8.GetString(buffer, 0, bytesRead));
+            //}
+            do
             {
                 var bytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length);
                 sb.Append(Encoding.UTF8.GetString(buffer, 0, bytesRead));
-            }
+            } while (networkStream.DataAvailable);
             return sb.ToString();
         }
 
@@ -53,7 +59,7 @@
         <link rel=""icon"" href= ""data:,"">
     </head>
         <body>
-            Hello from the server!
+            Hello from my server!
         </body>
 </html>";
             var contentLength = content.Length;

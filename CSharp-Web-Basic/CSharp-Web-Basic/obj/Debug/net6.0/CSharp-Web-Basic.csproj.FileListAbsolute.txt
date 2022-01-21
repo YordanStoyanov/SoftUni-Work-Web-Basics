@@ -16,3 +16,5 @@ C:\Users\YStoyanov\Documents\SoftUni-Web-Basic\CSharp-Web-Basic\SoftUni-Work-Web
 C:\Users\YStoyanov\Documents\SoftUni-Web-Basic\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\CSharp-Web-Basic\bin\Debug\net6.0\MyWebServer.Server.dll
 C:\Users\YStoyanov\Documents\SoftUni-Web-Basic\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\CSharp-Web-Basic\bin\Debug\net6.0\MyWebServer.Server.pdb
 C:\Users\YStoyanov\Documents\SoftUni-Web-Basic\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\CSharp-Web-Basic\obj\Debug\net6.0\CSharp-Web-Basic.csproj.CopyComplete
+C:\Users\YStoyanov\Documents\SoftUni-Web-Basic\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\CSharp-Web-Basic\bin\Debug\net6.0\DocumentFormat.OpenXml.dll
+C:\Users\YStoyanov\Documents\SoftUni-Web-Basic\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\CSharp-Web-Basic\bin\Debug\net6.0\System.IO.Packaging.dll

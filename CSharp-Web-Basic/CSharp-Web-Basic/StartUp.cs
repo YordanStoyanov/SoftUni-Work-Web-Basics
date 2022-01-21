@@ -6,7 +6,7 @@ public class StartUp
 {
     public static async Task Main()
     {
-        var server = new HTTPServer("127.0.01.1", 9090);
+        var server = new HTTPServer("127.0.0.1", 9090);
         await server.Start();
     }
 }

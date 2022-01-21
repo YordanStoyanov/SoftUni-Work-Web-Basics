@@ -10,7 +10,12 @@
       "ProjectGuid": "545901f5-af43-4cce-b0de-29dbb5f1c7a0",
       "DisplayName": "MyWebServer.Server",
       "ColorIndex": 1
+    },
+    "e0d1a55e-501c-4d77-af71-57917585bede": {
+      "ProjectGuid": "e0d1a55e-501c-4d77-af71-57917585bede",
+      "DisplayName": "MyWebServer.Server",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }

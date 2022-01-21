@@ -22,19 +22,6 @@
         "runtime": {
           "lib/netstandard2.0/System.IO.Packaging.dll": {}
         }
-      },
-      "MyWebServer.Server/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "DocumentFormat.OpenXml": "2.15.0"
-        },
-        "compile": {
-          "bin/placeholder/MyWebServer.Server.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/MyWebServer.Server.dll": {}
-        }
       }
     }
   },
@@ -87,16 +74,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "MyWebServer.Server/1.0.0": {
-      "type": "project",
-      "path": "../MyWebServer.Server/MyWebServer.Server.csproj",
-      "msbuildProject": "../MyWebServer.Server/MyWebServer.Server.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "MyWebServer.Server >= 1.0.0"
+      "DocumentFormat.OpenXml >= 2.15.0"
     ]
   },
   "packageFolders": {
@@ -106,11 +88,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\YStoyanov\\Documents\\SoftUni-Web-Basic\\CSharp-Web-Basic\\SoftUni-Work-Web-Basics\\CSharp-Web-Basic\\CSharp-Web-Basic\\CSharp-Web-Basic.csproj",
-      "projectName": "CSharp-Web-Basic",
-      "projectPath": "C:\\Users\\YStoyanov\\Documents\\SoftUni-Web-Basic\\CSharp-Web-Basic\\SoftUni-Work-Web-Basics\\CSharp-Web-Basic\\CSharp-Web-Basic\\CSharp-Web-Basic.csproj",
+      "projectUniqueName": "C:\\Users\\YStoyanov\\Documents\\SoftUni-Web-Basic\\CSharp-Web-Basic\\SoftUni-Work-Web-Basics\\CSharp-Web-Basic\\MyWebServer.Server\\MyWebServer.Server.csproj",
+      "projectName": "MyWebServer.Server",
+      "projectPath": "C:\\Users\\YStoyanov\\Documents\\SoftUni-Web-Basic\\CSharp-Web-Basic\\SoftUni-Work-Web-Basics\\CSharp-Web-Basic\\MyWebServer.Server\\MyWebServer.Server.csproj",
       "packagesPath": "C:\\Users\\YStoyanov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\YStoyanov\\Documents\\SoftUni-Web-Basic\\CSharp-Web-Basic\\SoftUni-Work-Web-Basics\\CSharp-Web-Basic\\CSharp-Web-Basic\\obj\\",
+      "outputPath": "C:\\Users\\YStoyanov\\Documents\\SoftUni-Web-Basic\\CSharp-Web-Basic\\SoftUni-Work-Web-Basics\\CSharp-Web-Basic\\MyWebServer.Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -129,11 +111,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "C:\\Users\\YStoyanov\\Documents\\SoftUni-Web-Basic\\CSharp-Web-Basic\\SoftUni-Work-Web-Basics\\CSharp-Web-Basic\\MyWebServer.Server\\MyWebServer.Server.csproj": {
-              "projectPath": "C:\\Users\\YStoyanov\\Documents\\SoftUni-Web-Basic\\CSharp-Web-Basic\\SoftUni-Work-Web-Basics\\CSharp-Web-Basic\\MyWebServer.Server\\MyWebServer.Server.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -145,6 +123,12 @@
     "frameworks": {
       "net6.0": {
         "targetAlias": "net6.0",
+        "dependencies": {
+          "DocumentFormat.OpenXml": {
+            "target": "Package",
+            "version": "[2.15.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

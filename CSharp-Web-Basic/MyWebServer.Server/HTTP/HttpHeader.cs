@@ -2,8 +2,7 @@
 {
     public class HttpHeader
     {
-        private string Name { get; init; }
-        private int Value { get; init; }
-
+        public string Name { get; init; }
+        public string Value { get; init; }
     }
 }

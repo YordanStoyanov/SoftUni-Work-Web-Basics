@@ -1,5 +1,6 @@
 ﻿namespace MyWebServer.Server
 {
+    using MyWebServer.Server.HTTP;
     using System.Net;
     using System.Net.Sockets;
     using System.Text;
@@ -25,8 +26,9 @@
                 var connection = await this.listener.AcceptTcpClientAsync();
                 Console.WriteLine("Server is connected!");
                 var networkStream = connection.GetStream();
-                var request = await this.ReadRequest(networkStream);
-                Console.WriteLine(request);
+                var requestText = await this.ReadRequest(networkStream);
+                Console.WriteLine(requestText);
+                var request = HttpRequest.Parse(requestText);
                 await WriteResponse(networkStream);
                 connection.Close();
             }
@@ -38,11 +40,6 @@
             var bufferLength = 1024;
             var buffer = new byte[bufferLength];
             var sb = new StringBuilder();
-            //while (networkStream.DataAvailable)
-            //{
-            //    var bytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length);
-            //    sb.Append(Encoding.UTF8.GetString(buffer, 0, bytesRead));
-            //}
             do
             {
                 var bytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length);

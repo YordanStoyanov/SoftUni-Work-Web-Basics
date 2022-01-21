@@ -13,5 +13,12 @@ namespace MyWebServer.Server.HTTP
         {
             this.heareds = new Dictionary<string, HttpHeader>();
         }
+
+        public void Add(HttpHeader header)
+        {
+            this.heareds.Add(header.Name, header);
+        }
+
+        public int Count => this.heareds.Count;
     }
 }

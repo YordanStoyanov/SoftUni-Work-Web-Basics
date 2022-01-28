@@ -1,0 +1,12 @@
+C:\Users\YStoyanov\Documents\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\MyWebServer.Server\obj\Debug\net5.0\MyWebServer.Server.csprojAssemblyReference.cache
+C:\Users\YStoyanov\Documents\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\MyWebServer.Server\obj\Debug\net5.0\MyWebServer.Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\YStoyanov\Documents\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\MyWebServer.Server\obj\Debug\net5.0\MyWebServer.Server.AssemblyInfoInputs.cache
+C:\Users\YStoyanov\Documents\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\MyWebServer.Server\obj\Debug\net5.0\MyWebServer.Server.AssemblyInfo.cs
+C:\Users\YStoyanov\Documents\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\MyWebServer.Server\obj\Debug\net5.0\MyWebServer.Server.csproj.CoreCompileInputs.cache
+C:\Users\YStoyanov\Documents\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\MyWebServer.Server\bin\Debug\net5.0\MyWebServer.Server.deps.json
+C:\Users\YStoyanov\Documents\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\MyWebServer.Server\bin\Debug\net5.0\MyWebServer.Server.dll
+C:\Users\YStoyanov\Documents\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\MyWebServer.Server\bin\Debug\net5.0\ref\MyWebServer.Server.dll
+C:\Users\YStoyanov\Documents\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\MyWebServer.Server\bin\Debug\net5.0\MyWebServer.Server.pdb
+C:\Users\YStoyanov\Documents\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\MyWebServer.Server\obj\Debug\net5.0\MyWebServer.Server.dll
+C:\Users\YStoyanov\Documents\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\MyWebServer.Server\obj\Debug\net5.0\ref\MyWebServer.Server.dll
+C:\Users\YStoyanov\Documents\CSharp-Web-Basic\SoftUni-Work-Web-Basics\CSharp-Web-Basic\MyWebServer.Server\obj\Debug\net5.0\MyWebServer.Server.pdb

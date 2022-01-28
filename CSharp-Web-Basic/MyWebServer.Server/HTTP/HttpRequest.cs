@@ -1,7 +1,11 @@
 ﻿namespace MyWebServer.Server.HTTP
 {
     using DocumentFormat.OpenXml.ExtendedProperties;
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using MyWebServer.Server.HTTP;
+
     public class HttpRequest
     {
         private const string newLine = "\r\n";
@@ -38,14 +42,10 @@
                 }
 
                 var indexOfColon = headerLine.IndexOf(":");
+                var headerName = headerLine.Substring(0, indexOfColon);
+                var headerValue = headerLine[(indexOfColon + 1)..].Trim();
 
-                var header = new HttpHeader
-                {
-                    Name = headerLine.Substring(0, indexOfColon),
-                    Value = headerLine[(indexOfColon + 1)..].Trim()
-                };
-
-                headerCollection.Add(header);
+                headerCollection.Add(headerName, headerValue);
             }
             return headerCollection;
         }

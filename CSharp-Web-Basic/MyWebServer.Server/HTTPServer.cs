@@ -55,7 +55,7 @@
                 var bytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length);
                 sb.Append(Encoding.UTF8.GetString(buffer, 0, bytesRead));
             } while (networkStream.DataAvailable);
-            return sb.ToString();
+            return sb.ToString(); 
         }
 
         private async Task WriteResponse(NetworkStream networkStream)

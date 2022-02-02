@@ -1,4 +1,4 @@
-﻿namespace MyWebServer.Server.TextResponses
+﻿namespace MyWebServer.Server.Responses
 {
     using MyWebServer.Server.HTTP;
     public class BadRequestResponse : HttpResponse

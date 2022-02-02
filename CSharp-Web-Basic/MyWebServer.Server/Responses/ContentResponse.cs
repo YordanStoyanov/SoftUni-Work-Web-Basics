@@ -1,17 +1,12 @@
-﻿namespace MyWebServer.Server.TextResponses
+﻿namespace MyWebServer.Server.Responses
 {
     using MyWebServer.Server.Common;
     using MyWebServer.Server.HTTP;
     using System.Text;
 
-    public class TextResponse : HttpResponse
+    public class ContentResponse : HttpResponse
     {
-        public TextResponse(string text) 
-            : this(text, "text/plain; charset=UTF-8")
-        {
-        }
-
-        public TextResponse(string text, string contentType)
+        public ContentResponse(string text, string contentType)
             : base(HttpStatusCode.OK)
         {
             Guard.AgainstNull(text);

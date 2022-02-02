@@ -1,4 +1,5 @@
 ﻿using MyWebServer.Server;
+using MyWebServer.Server.Responses;
 using MyWebServer.Server.TextResponses;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ public class StartUp
         => await new HTTPServer(
             routers => routers
             .MapGet("/", new TextResponse("Hello from my web server."))
-            .MapGet("/Cats", new TextResponse("<h1>Hello from the cats!</h1>", "text/html"))
-            .MapGet("/Dogs", new TextResponse("<h1>Hello from the dogs!</h1>", "text/html")))
+            .MapGet("/Cats", new HtmlResponse("Hello from the cats!"))
+            .MapGet("/Dogs", new HtmlResponse("Hello from the dogs!")))
         .Start();
 }

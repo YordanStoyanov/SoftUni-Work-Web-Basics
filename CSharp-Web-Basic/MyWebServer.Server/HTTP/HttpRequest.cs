@@ -10,7 +10,8 @@
     {
         private const string newLine = "\r\n";
         public HttpMethod Method { get; set; }
-        public string Url { get; set; }
+        public string Path { get; set; }
+        public Dictionary<string, string> Query { get; private set; }
         public HttpHeaderCollection Headers { get; private set; }
         public string Body { get; set; }
         public static HttpRequest Parse(string request)
@@ -19,6 +20,7 @@
             var startLine = lines.First().Split(" ");
             var method = ParseHttpMethod(startLine[0]);
             var url = startLine[1];
+            var (path, query) = ParseUrl(url);
             var headerCollection = ParseHttpHeaderCollection(lines.Skip(1));
             var bodyLines = lines.Skip(headerCollection.Count + 2).ToArray();
             var body = string.Join(newLine, bodyLines);
@@ -26,11 +28,14 @@
             return new HttpRequest
             {
                 Method = method,
-                Url = url,
+                Path = path,
+                Query = query,
                 Headers = headerCollection,
                 Body = body
             };
         }
+
+        
         private static HttpHeaderCollection ParseHttpHeaderCollection(IEnumerable<string> headerLines)
         {
             var headerCollection = new HttpHeaderCollection();
@@ -61,5 +66,22 @@
 
             };
         }
+        private static (string, Dictionary<string, string>) ParseUrl(string url)
+        {
+            var urlParts = url.Split('?');
+            var path = urlParts[0];
+            var query = urlParts.Length > 1 
+                ? ParseQuery(urlParts[1]) 
+                : new Dictionary<string, string>();
+            return (path, query);
+        }
+
+        private static Dictionary<string, string> ParseQuery(string queryString) 
+            => queryString
+            .Split('&')
+            .Select(part => part
+            .Split('='))
+            .Where(part => part.Length == 2)
+            .ToDictionary(part => part[0], part => part[1]);
     }
 }

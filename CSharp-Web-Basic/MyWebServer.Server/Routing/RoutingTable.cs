@@ -18,41 +18,35 @@ public class RoutingTable : IRoutingTable
             };
 
         public IRoutingTable Map(
-            string url,
             HttpMethod method,
-            HttpResponse response) 
-            => method switch
-            {
-                HttpMethod.Get => this.MapGet(url, response),
-                _ => throw new System.Exception(),
-            };
-
-        public IRoutingTable MapGet(
-            string url,
+            string path,
             HttpResponse response)
         {
-            Guard.AgainstNull(url, nameof(url));
+            Guard.AgainstNull(path, nameof(path));
             Guard.AgainstNull(response, nameof(response));
-            this.routes[HttpMethod.Get][url] = response;
+            this.routes[method][path] = response;
             return this;
         }
 
-        public IRoutingTable MapPost(
-            string url,
+        public IRoutingTable MapGet(
+            string path,
             HttpResponse response)
-        {
-            return null;
-        }
+            => Map(HttpMethod.Get, path, response);
+
+        public IRoutingTable MapPost(
+            string path,
+            HttpResponse response)
+            => Map(HttpMethod.Post, path, response);
 
         public HttpResponse MatchRequest(HttpRequest request)
         {
             var requestMethod = request.Method;
-            var requestURL = request.Url;
-            if (!this.routes.ContainsKey(requestMethod) || !this.routes[requestMethod].ContainsKey(requestURL))
+            var requestPath = request.Path;
+            if (!this.routes.ContainsKey(requestMethod) || !this.routes[requestMethod].ContainsKey(requestPath))
             {
                 return new NotFoundResponse();
             }
-            return this.routes[requestMethod][requestURL];
+            return this.routes[requestMethod][requestPath];
         }
     }
 }

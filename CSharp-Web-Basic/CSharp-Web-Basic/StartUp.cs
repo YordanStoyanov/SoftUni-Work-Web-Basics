@@ -8,9 +8,7 @@ public class StartUp
         => await new HTTPServer(
             routers => routers
             .MapGet("/", new TextResponse("Hello from my web server."))
-            .MapGet("/Cats", new TextResponse("Hello from the cats!")))
+            .MapGet("/Cats", new TextResponse("<h1>Hello from the cats!</h1>", "text/html"))
+            .MapGet("/Dogs", new TextResponse("<h1>Hello from the dogs!</h1>", "text/html")))
         .Start();
-
-        //var server = new HTTPServer("127.0.0.1", 9090);
-        //await server.Start();
 }

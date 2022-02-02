@@ -13,11 +13,14 @@
         private readonly IPAddress ipAddress;
         private readonly int port;
         private readonly TcpListener listener;
-        public HTTPServer(string ipAddress, int port, Action<IRoutingTable> routingTable)
+        private readonly RoutingTable routingTable;
+
+        public HTTPServer(string ipAddress, int port, Action<IRoutingTable> routingTableConfiguration)
         {
             this.ipAddress = IPAddress.Parse(ipAddress);
             this.port = 9090;
             listener = new TcpListener(this.ipAddress, port);
+            routingTableConfiguration(this.routingTable = new RoutingTable());
         }
         public HTTPServer(int port, Action<IRoutingTable> routingTable) 
             : this("127.0.0.1", port, routingTable)
@@ -34,12 +37,13 @@
             while (true)
             {
                 var connection = await this.listener.AcceptTcpClientAsync();
-                Console.WriteLine("Server is connected!");
+                //Console.WriteLine("Server is connected!");
                 var networkStream = connection.GetStream();
                 var requestText = await this.ReadRequest(networkStream);
-                Console.WriteLine(requestText);
+                //Console.WriteLine(requestText);
                 var request = HttpRequest.Parse(requestText);
-                await WriteResponse(networkStream);
+                var response = this.routingTable.MatchRequest(request);
+                await WriteResponse(networkStream, response);
                 connection.Close();
             }
 
@@ -58,27 +62,9 @@
             return sb.ToString(); 
         }
 
-        private async Task WriteResponse(NetworkStream networkStream)
+        private async Task WriteResponse(NetworkStream networkStream, HttpResponse response)
         {
-            var content = @"
-<html>
-    <head>
-        <link rel=""icon"" href= ""data:,"">
-    </head>
-        <body>
-            Hello from my server!
-        </body>
-</html>";
-            var contentLength = content.Length;
-            var response = $@"
-HTTP/1.1 200 OK
-Date: {DateTime.UtcNow.ToString("r")}
-Server: My web server
-Content-length: {contentLength}
-Content-type: text/html; charset=UTF-8
-{content}";
-
-            var responseBytes = Encoding.UTF8.GetBytes(response);
+            var responseBytes = Encoding.UTF8.GetBytes(response.ToString());
             Console.WriteLine("response");
             await networkStream.WriteAsync(responseBytes);
         }

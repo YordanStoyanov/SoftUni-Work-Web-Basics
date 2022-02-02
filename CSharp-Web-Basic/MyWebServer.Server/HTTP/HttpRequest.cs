@@ -9,7 +9,7 @@
     public class HttpRequest
     {
         private const string newLine = "\r\n";
-        private HttpMethod Method { get; set; }
+        public HttpMethod Method { get; set; }
         public string Url { get; set; }
         public HttpHeaderCollection Headers { get; private set; }
         public string Body { get; set; }

@@ -11,7 +11,7 @@
         protected HttpResponse Response(string text)
             => new TextResponse(text);
         protected HttpResponse Html(string html) 
-            => new HtmlResponse(html);
+            => new HtmlResponse(html); 
         protected HttpResponse Redirection(string location)
             => new RedirectResponse(location);
     }

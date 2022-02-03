@@ -1,4 +1,6 @@
-﻿using MyWebServer.Server.HTTP;
+﻿using MyWebServer.Server;
+using MyWebServer.Server.HTTP;
+using MyWebServer.Server.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +9,18 @@ using System.Threading.Tasks;
 
 namespace CSharp_Web_Basic.Controllers
 {
-    public class HomeController
+    public class HomeController : Controller
     {
-        public HttpResponse Index()
+        public HomeController(HttpRequest request) 
+            : base(request)
         {
-            return null;
         }
+
+        public HttpResponse Index() 
+            => new TextResponse("Hello from my web server.");
+
+        public HttpResponse LocalRedirect() => Redirection("/Cats");
+
+        public HttpResponse ToSoftUni() => Redirection("https://softuni.bg");
     }
 }

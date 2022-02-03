@@ -30,7 +30,11 @@ public class RoutingTable : IRoutingTable
         {
             Guard.AgainstNull(path, nameof(path));
             Guard.AgainstNull(responseFunction, nameof(responseFunction));
+<<<<<<< HEAD
             this.routes[method][path.ToLower()] = responseFunction;
+=======
+            this.routes[method][path] = responseFunction;
+>>>>>>> edf02670b93d14198f089930ba0724975919e8d2
             return this;
         }
 

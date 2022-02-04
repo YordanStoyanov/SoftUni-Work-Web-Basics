@@ -1,9 +1,10 @@
 ﻿namespace MyWebServer.Server.Responses
 {
+    using MyWebServer.Server.HTTP;
     public class TextResponse : ContentResponse
     {
         public TextResponse(string text) 
-            : base(text, "text/plain; charset=UTF-8")
+            : base(text, HttpContentType.PlainText)
         {
         }
     }

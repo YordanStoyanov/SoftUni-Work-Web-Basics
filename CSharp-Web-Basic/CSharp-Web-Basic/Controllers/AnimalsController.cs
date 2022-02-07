@@ -28,6 +28,6 @@ namespace CSharp_Web_Basic.Controllers
         }
 
         public HttpResponse Dogs() 
-            => View("Views/Animals/Dogs.cshtml");
+            => View("Dogs");
     }
 }

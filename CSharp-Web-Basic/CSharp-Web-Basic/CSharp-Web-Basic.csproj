@@ -19,6 +19,7 @@
 </ItemGroup>
 
 <ItemGroup>
+  <None Remove="Views\Animals\Cats.cshtml" />
   <None Remove="Views\Animals\Cat\CreateCat.cshtml" />
   <None Remove="Views\Animals\Rabbits.cshtml" />
   <None Remove="Views\Animals\Wild\Turtles.cshtml" />

@@ -11,13 +11,22 @@
         protected HttpRequest Request { get; private set; }
         protected HttpResponse Response(string text)
             => new TextResponse(text);
+        protected HttpResponse Text(string text)
+            => new TextResponse(text);
         protected HttpResponse Html(string html) 
             => new HtmlResponse(html); 
         protected HttpResponse Redirection(string location)
             => new RedirectResponse(location);
         protected HttpResponse View([CallerMemberName] string viewName = "")
-            => new ViewResponse(viewName);
-    //    protected HttpResponse View(string view, object model = null)
-    //        => new ViewResponse(view);
+            => new ViewResponse(viewName, this.GetControllerName(), null);
+        protected HttpResponse View(string viewName, object model)
+            => new ViewResponse(viewName, this.GetControllerName(), model);
+        protected HttpResponse View(object model, [CallerMemberName] string viewName = "")
+            => new ViewResponse(viewName, this.GetControllerName(), model);
+
+        private string GetControllerName()
+        {
+            return this.GetType().Name.Replace(nameof(Controller), string.Empty);
+        }
     }
 }

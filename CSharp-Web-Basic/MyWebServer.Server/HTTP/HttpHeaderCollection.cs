@@ -1,32 +1,43 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyWebServer.Server.HTTP
+﻿namespace MyWebServer.Server.HTTP
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
     public class HttpHeaderCollection : IEnumerable<HttpHeader>
     {
-        private readonly Dictionary<string, HttpHeader> heareds;
+        private readonly Dictionary<string, HttpHeader> headers;
         public HttpHeaderCollection()
         {
-            this.heareds = new Dictionary<string, HttpHeader>();
+            this.headers = new Dictionary<string, HttpHeader>();
         }
 
         public void Add(string name, string value)
         {
             var header = new HttpHeader(name, value);
-            this.heareds.Add(name, header);
+            this.headers.Add(name, header);
+        }
+        public bool Contains(string name) 
+            => this.headers.ContainsKey(name);
+        public HttpHeader Get(string name)
+        {
+            if (!this.Contains(name))
+            {
+                throw new InvalidOperationException($"Header with {name} could not be found");
+            }
+            return this.headers[name];
         }
 
         public IEnumerator<HttpHeader> GetEnumerator()
-            => this.heareds.Values.GetEnumerator();
+            => this.headers.Values.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator()
             => this.GetEnumerator();
 
-        public int Count => this.heareds.Count;
+        public int Count => this.headers.Count;
+
+        public HttpHeader this[string name]
+        {
+            get => this.headers[name];
+        }
     }
 }

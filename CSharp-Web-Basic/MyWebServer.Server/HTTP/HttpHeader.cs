@@ -1,8 +1,15 @@
 ﻿namespace MyWebServer.Server.HTTP
 {
     using MyWebServer.Server.Common;
-    public class HttpHeader//TODO: public record HttpHeader 
+    public class HttpHeader
     {
+        public const string ContentType = "Content-Type";
+        public const string ContentLength = "Content-Length";
+        public const string HttpVersion = "HTTP/1.1";
+        public const string Server = "Server";
+        public const string MyWebServer = "My web server";
+        public const string Date = "Date";
+        public const string Location = "Location";
         public HttpHeader(string name, string value)
         {
             Guard.AgainstNull(name, nameof(name));

@@ -12,7 +12,7 @@
 
         private void GetHtml(string viewPath)
         {
-            viewPath = Path.GetFullPath("Views/" + viewPath + ".cshtml");
+            viewPath = Path.GetFullPath(viewPath + ".cshtml");
 
             if (!File.Exists(viewPath))
             {

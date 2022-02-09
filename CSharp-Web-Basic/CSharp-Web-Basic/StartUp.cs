@@ -12,6 +12,10 @@ public class StartUp
             .MapGet("/Softuni", request => new HomeController(request).ToSoftUni())
             .MapGet("toCats", request => new HomeController(request).LocalRedirect())
             .MapGet("/Cats", request => new AnimalsController(request).Cats())
-            .MapGet("/Dogs", request => new AnimalsController(request).Dogs()))
+            .MapGet("/Dogs", request => new AnimalsController(request).Dogs())
+            .MapGet("/Rabbits", request => new AnimalsController(request).Bunnies())
+            .MapGet("/Turtles", request => new AnimalsController(request).Turtles())
+            .MapGet("/CreateCat", request => new CatsController(request).CreateCat())
+            .MapPost("/Cats/Save", request => new CatsController(request).Save()))
         .Start();
 }

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "tFHrnQz5cS9khuLMB3B3orsU/VAp9/A4e4tNmNcQUK3PJGGUbJxp8gMha067totbVd3rGUaiWrJHtJQrZk0a2g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\YStoyanov\\Documents\\CSharp-Web-Basic\\SoftUni-Work-Web-Basics\\CSharp-Web-Basic\\CSharp-Web-Basic\\CSharp-Web-Basic.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\YStoyanov\\.nuget\\packages\\documentformat.openxml\\2.15.0\\documentformat.openxml.2.15.0.nupkg.sha512",
+    "C:\\Users\\YStoyanov\\.nuget\\packages\\system.io.packaging\\4.7.0\\system.io.packaging.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

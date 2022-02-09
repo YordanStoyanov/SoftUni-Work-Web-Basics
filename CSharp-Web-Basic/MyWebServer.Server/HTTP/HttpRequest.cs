@@ -11,8 +11,9 @@
         private const string newLine = "\r\n";
         public HttpMethod Method { get; set; }
         public string Path { get; set; }
-        public Dictionary<string, string> Query { get; private set; }
-        public HttpHeaderCollection Headers { get; private set; }
+        public IReadOnlyDictionary<string, string> Query { get; private set; }
+        public IReadOnlyDictionary<string, string> Form { get; private set; }
+        public IReadOnlyDictionary<string, HttpHeader> Headers { get; private set; }
         public string Body { get; set; }
         public static HttpRequest Parse(string request)
         {
@@ -24,6 +25,7 @@
             var headerCollection = ParseHttpHeaderCollection(lines.Skip(1));
             var bodyLines = lines.Skip(headerCollection.Count + 2).ToArray();
             var body = string.Join(newLine, bodyLines);
+            var form = ParseForm(headerCollection, body);
 
             return new HttpRequest
             {
@@ -31,14 +33,15 @@
                 Path = path,
                 Query = query,
                 Headers = headerCollection,
-                Body = body
+                Body = body,
+                Form = form
             };
         }
 
-        
-        private static HttpHeaderCollection ParseHttpHeaderCollection(IEnumerable<string> headerLines)
+
+        private static Dictionary<string, HttpHeader> ParseHttpHeaderCollection(IEnumerable<string> headerLines)
         {
-            var headerCollection = new HttpHeaderCollection();
+            var headerCollection = new Dictionary<string, HttpHeader>();
             foreach (var headerLine in headerLines)
             {
                 if (headerLine == String.Empty)
@@ -50,7 +53,7 @@
                 var headerName = headerLine.Substring(0, indexOfColon);
                 var headerValue = headerLine[(indexOfColon + 1)..].Trim();
 
-                headerCollection.Add(headerName, headerValue);
+                headerCollection.Add(headerName, new HttpHeader(headerName, headerValue));
             }
             return headerCollection;
         }
@@ -83,5 +86,16 @@
             .Split('='))
             .Where(part => part.Length == 2)
             .ToDictionary(part => part[0], part => part[1]);
+
+        private static Dictionary<string, string> ParseForm(Dictionary<string, HttpHeader> headerCollection, string body)
+        {
+            var result = new Dictionary<string, string>();
+            if (headerCollection.ContainsKey(HttpHeader.ContentType) 
+                && headerCollection[HttpHeader.ContentType].Value == HttpContentType.FormUrlEncoded)
+            {
+                result = ParseQuery(body);
+            }
+            return result;
+        }
     }
 }

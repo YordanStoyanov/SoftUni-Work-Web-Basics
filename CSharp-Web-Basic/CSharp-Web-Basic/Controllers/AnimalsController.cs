@@ -27,7 +27,8 @@ namespace CSharp_Web_Basic.Controllers
             return Html(result);
         }
 
-        public HttpResponse Dogs() 
-            => View("Dogs");
+        public HttpResponse Dogs() => View("Dogs");
+        public HttpResponse Bunnies() => View("Rabbits");
+        public HttpResponse Turtles() => View("Wild/Turtles");
     }
 }

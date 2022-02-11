@@ -8,6 +8,8 @@
 
     public class HttpRequest
     {
+        private static Dictionary<string, HttpSession> Sessions 
+            = new Dictionary<string, HttpSession>();
         private const string newLine = "\r\n";
         public HttpMethod Method { get; set; }
         public string Path { get; set; }
@@ -15,6 +17,7 @@
         public IReadOnlyDictionary<string, string> Form { get; private set; }
         public IReadOnlyDictionary<string, HttpHeader> Headers { get; private set; }
         public IReadOnlyDictionary<string, HttpCookie> Cookies { get; private set; }
+        public HttpSession Session { get; private set; }
         public string Body { get; set; }
         public static HttpRequest Parse(string request)
         {
@@ -25,6 +28,7 @@
             var (path, query) = ParseUrl(url);
             var headerCollection = ParseHttpHeaderCollection(lines.Skip(1));
             var cookies = ParseCookies(headerCollection);
+            var session = GetSession(cookies);
             var bodyLines = lines.Skip(headerCollection.Count + 2).ToArray();
             var body = string.Join(newLine, bodyLines);
             var form = ParseForm(headerCollection, body);
@@ -36,6 +40,7 @@
                 Query = query,
                 Headers = headerCollection,
                 Cookies = cookies,
+                Session = session,
                 Body = body,
                 Form = form
             };
@@ -43,6 +48,20 @@
         
     }
 
+        private static HttpSession GetSession(Dictionary<string, HttpCookie> cookies)
+        {
+            var sessionID = cookies.ContainsKey(HttpSession.SessionCookieName) 
+                ? cookies[HttpSession.SessionCookieName].Value
+                : Guid.NewGuid().ToString();
+            if (!Sessions.ContainsKey(sessionID))
+            {
+                Sessions[sessionID] = new HttpSession
+                {
+                    Id = sessionID
+                };
+            }
+            return Sessions[sessionID];
+        }
 
         private static Dictionary<string, HttpHeader> ParseHttpHeaderCollection(IEnumerable<string> headerLines)
         {

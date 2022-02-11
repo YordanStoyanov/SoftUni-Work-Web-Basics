@@ -43,11 +43,15 @@
                 //Console.WriteLine(requestText);
                 var request = HttpRequest.Parse(requestText);
                 var response = this.routingTable.ExecuteRequest(request);
+                this.PrepareSession(request, response);
                 await WriteResponse(networkStream, response);
                 connection.Close();
             }
 
         }
+
+        private void PrepareSession(HttpRequest request, HttpResponse response) 
+            => response.AddCookie(HttpSession.SessionCookieName, request.Session.Id);
 
         private async Task<string> ReadRequest(NetworkStream networkStream)
         {
@@ -68,5 +72,7 @@
             Console.WriteLine("response");
             await networkStream.WriteAsync(responseBytes);
         }
+
+
     }
 }

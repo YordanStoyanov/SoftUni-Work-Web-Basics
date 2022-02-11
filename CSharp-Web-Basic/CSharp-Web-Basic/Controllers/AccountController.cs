@@ -23,9 +23,16 @@
             return Text("Cookies set");
         }
 
-        private ActionResult Text()
+        public HttpResponse ActionWithSession()
         {
-            throw new NotImplementedException();
+            const string currentDateKey = "CurrentDate";
+            if (this.Request.Session.ContainsKey(currentDateKey))
+            {
+                var currentDate = this.Request.Session[currentDateKey];
+                return Text($"Stored date {currentDate}");
+            }
+            this.Request.Session[currentDateKey] = DateTime.UtcNow.ToString();
+            return Text("Date stored");
         }
     }
 }

@@ -3,6 +3,7 @@
     using MyWebServer.Server;
     using MyWebServer.Server.HTTP;
     using MyWebServer.Server.Results;
+    using System;
 
     public class AccountController : Controller
     {
@@ -12,8 +13,19 @@
         }
         public ActionResult ActionWithCookies()
         {
-            this.Response.AddCookie("My-cookie", "My-value");
-            return Text("Hello");
+            const string cookieName = "My-cookie";
+            if (this.Request.Cookies.ContainsKey(cookieName))
+            {
+                var cookie = this.Request.Cookies[cookieName];
+                return Text($"Cookies already exist {cookie}");
+            }
+            this.Response.AddCookie(cookieName, "My-value");
+            return Text("Cookies set");
+        }
+
+        private ActionResult Text()
+        {
+            throw new NotImplementedException();
         }
     }
 }

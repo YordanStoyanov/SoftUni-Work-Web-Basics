@@ -15,16 +15,16 @@
         protected HttpResponse Response { get; private init; }
         private void PrepareHeaders(IDictionary<string, HttpHeader> headers)
         {
-            foreach (var header in headers)
+            foreach (var header in headers.Values)
             {
-                this.Headers[header.Key] = header.Value;
+                this.AddHeader(header.Name, header.Value);
             }
         }
         private void PrepareCookie(IDictionary<string, HttpCookie> cookies)
         {
-            foreach (var cookie in cookies)
+            foreach (var cookie in cookies.Values)
             {
-                this.Cookies[cookie.Key] = cookie.Value;
+                this.AddCookie(cookie.Name, cookie.Value);
             }
         }
     }

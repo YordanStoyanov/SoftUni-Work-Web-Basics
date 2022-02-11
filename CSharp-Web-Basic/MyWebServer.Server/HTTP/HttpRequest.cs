@@ -24,6 +24,7 @@
             var url = startLine[1];
             var (path, query) = ParseUrl(url);
             var headerCollection = ParseHttpHeaderCollection(lines.Skip(1));
+            var cookies = ParseCookies(headerCollection);
             var bodyLines = lines.Skip(headerCollection.Count + 2).ToArray();
             var body = string.Join(newLine, bodyLines);
             var form = ParseForm(headerCollection, body);
@@ -34,10 +35,13 @@
                 Path = path,
                 Query = query,
                 Headers = headerCollection,
+                Cookies = cookies,
                 Body = body,
                 Form = form
             };
-        }
+
+        
+    }
 
 
         private static Dictionary<string, HttpHeader> ParseHttpHeaderCollection(IEnumerable<string> headerLines)
@@ -57,6 +61,32 @@
                 headerCollection.Add(headerName, new HttpHeader(headerName, headerValue));
             }
             return headerCollection;
+        }
+        private static Dictionary<string, HttpCookie> ParseCookies(Dictionary<string, HttpHeader> header)
+        {
+            var cookieCollection = new Dictionary<string, HttpCookie>();
+            if (header.ContainsKey(HttpHeader.Cookie))
+            {
+                var cookieHeader = header[HttpHeader.Cookie];
+                var allCookies = cookieHeader
+                    .Value
+                    .Split(';')
+                    .Select(c => c.Split('0'));
+                //.Select(cp => new 
+                //{ 
+                //    Name = cp[0].Trim(),
+                //    Value = cp[1].Trim()
+                //})
+                //.ToList().ForEach(c => cookieCollection.Add(c.Name, c.Value));
+                foreach (var cookieParts in allCookies)
+                {
+                    var cookieName = cookieParts[0].Trim();
+                    var cookieValue = cookieParts[1].Trim();
+                    var cookie = new HttpCookie(cookieName, cookieValue);
+                    cookieCollection.Add(cookieName, cookie);
+                }
+            }
+            return cookieCollection;
         }
         private static HttpMethod ParseHttpMethod(string method)
         {

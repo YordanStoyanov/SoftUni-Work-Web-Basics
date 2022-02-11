@@ -1,7 +1,7 @@
 ﻿using CSharp_Web_Basic.Models.Animals;
 using MyWebServer.Server;
 using MyWebServer.Server.HTTP;
-using MyWebServer.Server.Responses;
+using MyWebServer.Server.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace CSharp_Web_Basic.Controllers
             : base (request)
         {
         }
-        public HttpResponse Cats()
+        public ActionResult Cats()
         {
             const string nameKey = "Name";
             const string ageKey = "Age";
@@ -33,8 +33,8 @@ namespace CSharp_Web_Basic.Controllers
             return View(catViewModel);
         }
 
-        public HttpResponse Dogs() => View("Dogs");
-        public HttpResponse Bunnies() => View("Rabbits");
-        public HttpResponse Turtles() => View("Wild/Turtles");
+        public ActionResult Dogs() => View("Dogs");
+        public ActionResult Bunnies() => View("Rabbits");
+        public ActionResult Turtles() => View("Wild/Turtles");
     }
 }

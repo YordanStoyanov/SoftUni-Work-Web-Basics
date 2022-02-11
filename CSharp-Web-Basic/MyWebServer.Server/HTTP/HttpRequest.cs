@@ -14,6 +14,7 @@
         public IReadOnlyDictionary<string, string> Query { get; private set; }
         public IReadOnlyDictionary<string, string> Form { get; private set; }
         public IReadOnlyDictionary<string, HttpHeader> Headers { get; private set; }
+        public IReadOnlyDictionary<string, HttpCookie> Cookies { get; private set; }
         public string Body { get; set; }
         public static HttpRequest Parse(string request)
         {

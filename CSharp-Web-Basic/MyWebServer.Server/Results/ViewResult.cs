@@ -1,16 +1,22 @@
-﻿namespace MyWebServer.Server.Responses
+﻿namespace MyWebServer.Server.Results
 {
     using MyWebServer.Server.HTTP;
     using System.IO;
-    using MyWebServer.Server.Responses;
     using System.Linq;
 
-    public class ViewResponse : HttpResponse
+    public class ViewResult : ActionResult
     {
         private const char Separator = '/';
-        public ViewResponse(string viewName, string controllerName, object model)
-            : base(HttpStatusCode.OK) 
-            => this.GetHtml(viewName, controllerName, model);
+        public ViewResult(
+            HttpResponse response,
+            string viewName,
+            string controllerName,
+            object model)
+            : base(response)
+        {
+            this.StatusCode = HttpStatusCode.OK;
+            this.GetHtml(viewName, controllerName, model);
+        }
 
         private void GetHtml(string viewName, string controllerName, object model)
         {

@@ -1,6 +1,6 @@
 ﻿using MyWebServer.Server;
 using MyWebServer.Server.HTTP;
-using MyWebServer.Server.Responses;
+using MyWebServer.Server.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace CSharp_Web_Basic.Controllers
         }
 
         public HttpResponse Index() 
-            => new TextResponse("Hello from my web server.");
+            => new TextResult(Response, "Hello from my web server.");
 
         public HttpResponse LocalRedirect() => Redirection("/Cats");
 

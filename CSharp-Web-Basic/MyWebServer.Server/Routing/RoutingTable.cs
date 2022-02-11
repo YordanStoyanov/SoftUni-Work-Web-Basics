@@ -2,7 +2,7 @@
 {
     using MyWebServer.Server.Common;
     using MyWebServer.Server.HTTP;
-    using MyWebServer.Server.TextResponses;
+    using MyWebServer.Server.Results;
     using System;
     using System.Collections.Generic;
 
@@ -60,7 +60,7 @@ public class RoutingTable : IRoutingTable
             var requestPath = request.Path;
             if (!this.routes.ContainsKey(requestMethod) || !this.routes[requestMethod].ContainsKey(requestPath))
             {
-                return new NotFoundResponse();
+                return new HttpResponse(HttpStatusCode.NotFound);
             }
             var responseFunction = this.routes[requestMethod][requestPath];
             return responseFunction(request);

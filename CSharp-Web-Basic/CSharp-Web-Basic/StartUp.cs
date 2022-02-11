@@ -1,5 +1,5 @@
 ﻿using MyWebServer.Server;
-using MyWebServer.Server.Responses;
+using MyWebServer.Server.Results;
 using System.Threading.Tasks;
 using System;
 using CSharp_Web_Basic.Controllers;
@@ -15,6 +15,7 @@ public class StartUp
             .MapGet("/Dogs", request => new AnimalsController(request).Dogs())
             .MapGet("/Rabbits", request => new AnimalsController(request).Bunnies())
             .MapGet("/Turtles", request => new AnimalsController(request).Turtles())
+            .MapGet("Cookies", request => new AccountController(request).ActionWithCookies())
             .MapGet("/CreateCat", request => new CatsController(request).CreateCat())
             .MapPost("/Cats/Save", request => new CatsController(request).Save()))
         .Start();
